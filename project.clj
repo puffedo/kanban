@@ -12,7 +12,8 @@
                  [ring.middleware.logger "0.5.0"]
                  [compojure "1.4.0"]
                  [org.omcljs/om "1.0.0-alpha28"]
-                 [environ "1.0.2"]]
+                 [environ "1.0.2"]
+                 [sablono "0.6.2"]]
 
   :plugins [[lein-cljsbuild "1.1.1"]
             [lein-environ "1.0.1"]
