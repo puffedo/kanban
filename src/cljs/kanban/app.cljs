@@ -25,10 +25,10 @@
      {:cards/editing (om/get-query CardDialog)}
      {:users (om/get-query Assignee)}])
   Object
-  (board-activate [this ref]
-    (om/transact! this `[(boards/activate {:ref ~ref})]))
+  #_(board-activate [this ref]
+    (om/transact! reconciler `[(boards/activate {:ref ~ref})]))
 
-  (board-create [this]
+  #_(board-create [this]
     (om/transact! this `[(boards/create-board)]))
 
   (board-update [this board data]
@@ -72,11 +72,7 @@
                                  (dom/a #js {:onClick #(.board-activate this nil)}
                                         "Om Next Kanban Demo"))
                          (dom/nav nil
-                                  (let [props (-> this om/props (select-keys [:boards]))]
-                                    (boards-menu
-                                      (om/computed props
-                                                   {:activate-fn #(.board-activate this %)
-                                                    :create-fn   #(.board-create this)})))))
+                                  (boards-menu (-> this om/props (select-keys [:boards])))))
              (dom/main nil
                        (if-let [active-board (-> this om/props :boards/active)]
                          (board
